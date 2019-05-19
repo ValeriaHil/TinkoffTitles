@@ -1,6 +1,7 @@
 package com.example.lenovo.tinkofftitles
 
 import android.app.Application
+import com.example.lenovo.tinkofftitles.database.DatabaseModule
 import com.example.lenovo.tinkofftitles.titles.TitlesRepository
 
 class App : Application() {
@@ -14,7 +15,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        repositoryComponent = DaggerRepositoryComponent.builder().build()
+        repositoryComponent = DaggerRepositoryComponent.builder().databaseModule(DatabaseModule(this)).build()
         titlesRepo = TitlesRepository()
     }
 }

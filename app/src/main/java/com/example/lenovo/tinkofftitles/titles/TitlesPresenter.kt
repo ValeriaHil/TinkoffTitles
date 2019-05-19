@@ -14,7 +14,8 @@ class TitlesPresenter : MvpBasePresenter<TitlesView>() {
         repo.getTitles().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                view?.setData(it)
+                val list = it.sortedBy { item -> item.publication.time }
+                view?.setData(list.asReversed())
             },
                 {
                     view?.showError(it, false)
