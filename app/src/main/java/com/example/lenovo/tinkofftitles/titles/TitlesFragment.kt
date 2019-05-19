@@ -18,7 +18,7 @@ class TitlesFragment : MvpLceFragment<SwipeRefreshLayout, List<Title>, TitlesVie
     TitlesView, SwipeRefreshLayout.OnRefreshListener {
 
     interface TitleFragmentListener {
-        fun onTitleItemClicked()
+        fun onTitleItemClicked(id: Int)
     }
 
     private lateinit var recyclerView: RecyclerView
@@ -83,6 +83,7 @@ class TitlesFragment : MvpLceFragment<SwipeRefreshLayout, List<Title>, TitlesVie
     }
 
     override fun onTitleItemClicked(id: Int) {
+        listener?.onTitleItemClicked(id)
     }
 
     override fun onRefresh() {
@@ -111,15 +112,17 @@ class TitlesFragment : MvpLceFragment<SwipeRefreshLayout, List<Title>, TitlesVie
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             private val title: TextView = view.findViewById(R.id.title_info)
+            private var id = -1
 
             init {
                 view.setOnClickListener {
-
+                    presenter.onItemClicked(id)
                 }
             }
 
             fun bind(title: Title) {
                 this.title.text = title.text
+                id = title.id
             }
         }
     }

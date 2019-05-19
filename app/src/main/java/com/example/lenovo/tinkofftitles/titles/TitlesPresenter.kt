@@ -21,4 +21,8 @@ class TitlesPresenter : MvpBasePresenter<TitlesView>() {
                     view?.showError(it, false)
                 })
     }
+
+    fun onItemClicked(id: Int) {
+        view?.onTitleItemClicked(id)
+    }
 }
