@@ -79,7 +79,7 @@ class TitlesFragment : MvpLceFragment<SwipeRefreshLayout, List<Title>, TitlesVie
     }
 
     override fun getErrorMessage(e: Throwable?, pullToRefresh: Boolean): String {
-        return e?.message ?: ""
+        return getString(R.string.error_message)
     }
 
     override fun onTitleItemClicked(id: Int) {

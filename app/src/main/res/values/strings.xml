@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TinkoffTitles</string>
+    <string name="error_message">Sorry, can\'t load. Try to check your Internet connection</string>
 </resources>

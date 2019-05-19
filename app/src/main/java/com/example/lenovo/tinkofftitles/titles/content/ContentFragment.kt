@@ -51,7 +51,7 @@ class ContentFragment : MvpLceFragment<SwipeRefreshLayout, Content, ContentView,
     }
 
     override fun getErrorMessage(e: Throwable?, pullToRefresh: Boolean): String {
-        return e?.message ?: ""
+        return getString(R.string.error_message)
     }
 
     override fun onRefresh() {
