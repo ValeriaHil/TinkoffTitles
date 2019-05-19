@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import com.example.lenovo.tinkofftitles.Model.Title
 import com.example.lenovo.tinkofftitles.R
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceFragment
@@ -74,7 +75,11 @@ class TitlesFragment : MvpLceFragment<SwipeRefreshLayout, List<Title>, TitlesVie
 
     private fun updateData(data: List<Title>?) {
         if (data != null) {
-            adapter.updateData(data)
+            if (data.isEmpty()) {
+                Toast.makeText(context, getString(R.string.nothing), Toast.LENGTH_LONG).show()
+            } else {
+                adapter.updateData(data)
+            }
         }
     }
 
