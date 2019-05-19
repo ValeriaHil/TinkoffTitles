@@ -3,6 +3,7 @@ package com.example.lenovo.tinkofftitles.titles
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -49,7 +50,7 @@ class TitlesFragment : MvpLceFragment<SwipeRefreshLayout, List<Title>, TitlesVie
         adapter = Adapter(emptyList())
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
-
+        recyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         val refresh = view.findViewById<SwipeRefreshLayout>(R.id.contentView)
         refresh.setOnRefreshListener(this)
 
