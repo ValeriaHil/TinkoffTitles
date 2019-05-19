@@ -2,6 +2,7 @@ package com.example.lenovo.tinkofftitles.titles.content
 
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,7 +45,9 @@ class ContentFragment : MvpLceFragment<SwipeRefreshLayout, Content, ContentView,
     override fun setData(data: Content?) {
         showContent()
         val content = view?.findViewById<TextView>(R.id.content)
-        content?.text = data?.text
+        content?.text = Html.fromHtml(data?.text, Html.FROM_HTML_MODE_LEGACY)
+
+        contentView.isRefreshing = false
     }
 
     override fun getErrorMessage(e: Throwable?, pullToRefresh: Boolean): String {
